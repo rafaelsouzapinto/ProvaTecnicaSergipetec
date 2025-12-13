@@ -5,10 +5,12 @@ import dev.rafael.ProvaSergipetec.mapper.FeriasMapper;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
 import dev.rafael.ProvaSergipetec.repository.FeriasRepository;
 import dev.rafael.ProvaSergipetec.service.exception.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FeriasServiceImpl implements FeriasService {
 
     private final FeriasRepository feriasRepository;
