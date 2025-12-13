@@ -56,6 +56,10 @@ public class ServidorModel {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
+    public List<FeriasModel> getFerias() {
+        return ferias;
+    }
+
 
     @Override
     public String toString() {

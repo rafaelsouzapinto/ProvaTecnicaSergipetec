@@ -62,6 +62,18 @@ public class FeriasModel {
     public void setStatusFerias(StatusFerias statusFerias) {
         this.statusFerias = statusFerias;
     }
+    public ServidorModel getServidor() {
+        return servidor;
+    }
+    public void setServidor(ServidorModel servidor) {
+        this.servidor = servidor;
+    }
+    public PagamentoModel getPagamento() {
+        return pagamento;
+    }
+    public void setPagamento(PagamentoModel pagamento) {
+        this.pagamento = pagamento;
+    }
 
     @Override
     public String toString() {
