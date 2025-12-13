@@ -13,19 +13,23 @@ public class ServidorModel {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nome;
 
+    @Column(unique = true)
     private String email;
 
     @Column(nullable = false, unique = true)
     private String matricula;
 
+    @Column(nullable = false)
+    private String senha;
+
     @OneToMany(mappedBy = "servidor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<FeriasModel> ferias;
 
-    public ServidorModel(Long id, String name, String email, String matricula) {
+    public ServidorModel(Long id, String nome, String email, String matricula) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.email = email;
         this.matricula = matricula;
     }
@@ -38,11 +42,11 @@ public class ServidorModel {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     public String getEmail() {
         return email;
@@ -65,7 +69,7 @@ public class ServidorModel {
     public String toString() {
         return "ServidorModel{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", matricula='" + matricula + '\'' +
                 '}';
