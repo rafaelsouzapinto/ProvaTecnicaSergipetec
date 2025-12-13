@@ -1,0 +1,38 @@
+package dev.rafael.ProvaSergipetec.controller;
+
+import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
+import dev.rafael.ProvaSergipetec.service.FeriasServiceImpl;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/")
+public class FeriasController {
+
+    private final FeriasServiceImpl feriasService;
+
+    public FeriasController(FeriasServiceImpl feriasService) {
+        this.feriasService = feriasService;
+    }
+
+    @GetMapping("/servidores/{servidorId}/ferias")
+    public ResponseEntity<List<FeriasDetalheDTO>> listarFeriasPorServidor(@PathVariable Long servidorId) {
+        List<FeriasDetalheDTO> feriasList = feriasService.listarPorServidor(servidorId);
+        return ResponseEntity.ok(feriasList);
+    }
+
+    @GetMapping("/ferias/{feriasId}")
+    public ResponseEntity<FeriasDetalheDTO> obterDetalheFerias(@PathVariable Long feriasId) {
+        try {
+            FeriasDetalheDTO detalhe = feriasService.buscarPorId(feriasId);
+            return ResponseEntity.ok(detalhe);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
