@@ -1,11 +1,27 @@
 package dev.rafael.ProvaSergipetec.model;
 
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name = "servidor_tb")
 public class ServidorModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
     private String email;
+
+    @Column(nullable = false, unique = true)
     private String matricula;
+
+    @OneToMany(mappedBy = "servidor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FeriasModel> ferias;
 
     public ServidorModel(Long id, String name, String email, String matricula) {
         this.id = id;
