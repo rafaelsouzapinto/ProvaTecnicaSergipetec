@@ -1,15 +1,31 @@
 package dev.rafael.ProvaSergipetec.model;
 
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class PagamentoModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double valor;
+
+    @Column(name = "valor", precision = 10, scale = 2)
+    private BigDecimal valor;
+
+    @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
+
+    @Column(name = "descricao")
     private String descricao;
 
-    public PagamentoModel(Long id, Double valor, LocalDate dataPagamento, String descricao) {
+    @OneToOne
+    @JoinColumn(name = "ferias_id", referencedColumnName = "id", nullable = false, unique = true)
+    private FeriasModel ferias;
+
+
+    public PagamentoModel(Long id, BigDecimal valor, LocalDate dataPagamento, String descricao) {
         this.id = id;
         this.valor = valor;
         this.dataPagamento = dataPagamento;
@@ -24,10 +40,10 @@ public class PagamentoModel {
     public void setId(Long id) {
         this.id = id;
     }
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
     public LocalDate getDataPagamento() {

@@ -1,13 +1,33 @@
 package dev.rafael.ProvaSergipetec.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "ferias_tb")
 public class FeriasModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private LocalDate dataInicio;
+
+    @Column(nullable = false)
     private LocalDate dataFim;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
     private StatusFerias statusFerias;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "servidor_id", nullable = false)
+    private ServidorModel servidor;
+
+    @OneToOne(mappedBy = "ferias", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private PagamentoModel pagamento;
 
     public FeriasModel(Long id, LocalDate dataInicio, LocalDate dataFim, StatusFerias statusFerias) {
         this.id = id;
