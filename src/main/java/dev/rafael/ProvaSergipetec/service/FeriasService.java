@@ -10,6 +10,4 @@ public interface FeriasService {
     List<FeriasDetalheDTO> listarPorServidor(Long servidorId);
 
     FeriasDetalheDTO buscarPorId(Long id);
-
-    Long simularLogin(LoginRequestDTO loginRequest);
 }
