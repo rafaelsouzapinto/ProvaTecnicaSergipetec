@@ -16,6 +16,8 @@ public class ServidorServiceImpl implements ServidorService{
         this.servidorRepository = servidorRepository;
     }
 
+    // Simula o processo de login do Servidor público
+    // O metodo verifica se a matricula e senha passados existem no banco e retorna o id do servidor
     @Override
     public Long simularLogin(LoginRequestDTO loginRequest) {
         Optional<ServidorModel> servidor = servidorRepository.findByMatriculaAndSenha(

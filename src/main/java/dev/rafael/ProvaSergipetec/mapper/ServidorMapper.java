@@ -18,9 +18,7 @@ public class ServidorMapper {
         }
         List<Long> idsFerias = Collections.emptyList();
         if (model.getFerias() != null) {
-            idsFerias = model.getFerias().stream()
-                    .map(FeriasModel::getId)
-                    .collect(Collectors.toList());
+            idsFerias = model.getFerias().stream().map(FeriasModel::getId).collect(Collectors.toList());
         }
         return new ServidorDetalheDTO(
                 model.getId(),
@@ -32,8 +30,6 @@ public class ServidorMapper {
     }
 
     public List<ServidorDetalheDTO> toListDTO(List<ServidorModel> models) {
-        return models.stream()
-                .map(this::toDetalheDTO)
-                .collect(Collectors.toList());
+        return models.stream().map(this::toDetalheDTO).collect(Collectors.toList());
     }
 }

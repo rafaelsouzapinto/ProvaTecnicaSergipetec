@@ -2,7 +2,6 @@ package dev.rafael.ProvaSergipetec.service;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
 import dev.rafael.ProvaSergipetec.dto.FeriasInputDTO;
-import dev.rafael.ProvaSergipetec.dto.LoginRequestDTO;
 import dev.rafael.ProvaSergipetec.mapper.FeriasMapper;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
 import dev.rafael.ProvaSergipetec.model.ServidorModel;
@@ -45,9 +44,9 @@ public class FeriasServiceImpl implements FeriasService {
 
     @Override
     public FeriasDetalheDTO criarNovaFerias(FeriasInputDTO inputDTO) {
-        ServidorModel servidor = servidorRepository.findById(inputDTO.idServidor())
-                .orElseThrow(() -> new RuntimeException("Servidor não encontrado"));
-
+        ServidorModel servidor = servidorRepository.findById(inputDTO.idServidor()).orElseThrow(
+                () -> new RuntimeException("Servidor não encontrado")
+        );
         StatusFerias statusInicial = StatusFerias.SOLICITADA;
         FeriasModel novaFerias = feriasMapper.toModel(inputDTO, servidor, statusInicial);
         FeriasModel feriasSalva = feriasRepository.save(novaFerias);

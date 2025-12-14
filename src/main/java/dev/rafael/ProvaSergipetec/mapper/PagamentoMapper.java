@@ -27,8 +27,6 @@ public class PagamentoMapper {
         if (models == null) {
             return Collections.emptyList();
         }
-        return models.stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
+        return models.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }
