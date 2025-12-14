@@ -24,7 +24,7 @@ public class ServidorMapper {
         }
         return new ServidorDetalheDTO(
                 model.getId(),
-                model.getName(),
+                model.getNome(),
                 model.getEmail(),
                 model.getMatricula(),
                 idsFerias

@@ -4,7 +4,7 @@ import java.util.List;
 
 public record ServidorDetalheDTO(
         Long id,
-        String name,
+        String nome,
         String email,
         String matricula,
         List<Long> idsFerias

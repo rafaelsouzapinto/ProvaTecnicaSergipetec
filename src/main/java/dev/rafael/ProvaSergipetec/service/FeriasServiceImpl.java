@@ -1,9 +1,12 @@
 package dev.rafael.ProvaSergipetec.service;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
+import dev.rafael.ProvaSergipetec.dto.LoginRequestDTO;
 import dev.rafael.ProvaSergipetec.mapper.FeriasMapper;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
+import dev.rafael.ProvaSergipetec.model.ServidorModel;
 import dev.rafael.ProvaSergipetec.repository.FeriasRepository;
+import dev.rafael.ProvaSergipetec.repository.ServidorRepository;
 import dev.rafael.ProvaSergipetec.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +17,12 @@ import java.util.Optional;
 public class FeriasServiceImpl implements FeriasService {
 
     private final FeriasRepository feriasRepository;
+    private final ServidorRepository servidorRepository;
     private final FeriasMapper feriasMapper;
 
-    public FeriasServiceImpl(FeriasRepository feriasRepository, FeriasMapper feriasMapper) {
+    public FeriasServiceImpl(FeriasRepository feriasRepository, ServidorRepository servidorRepository, FeriasMapper feriasMapper) {
         this.feriasRepository = feriasRepository;
+        this.servidorRepository = servidorRepository;
         this.feriasMapper = feriasMapper;
     }
 
