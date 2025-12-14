@@ -38,7 +38,9 @@ class ServidorServiceTest {
     @Test
     void simularLogin_deveRetornarIdServidorEmCasoDeSucesso() {
         when(servidorRepository.findByMatriculaAndSenha("123456", "senha123")).thenReturn(Optional.of(mockServidor));
+
         Long servidorId = servidorService.simularLogin(loginRequest);
+
         assertEquals(10L, servidorId);
         verify(servidorRepository, times(1)).findByMatriculaAndSenha("123456", "senha123");
     }

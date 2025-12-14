@@ -58,6 +58,7 @@ class FeriasServiceTest {
                 servidorId,
                 null
         );
+
         mockServidor = new ServidorModel();
         mockServidor.setId(servidorId);
         inputDTO = new FeriasInputDTO(
@@ -67,7 +68,7 @@ class FeriasServiceTest {
         );
 
         mockFeriasSalva = new FeriasModel();
-        mockFeriasSalva.setId(feriasId + 1); // Novo ID
+        mockFeriasSalva.setId(feriasId + 1);
         mockFeriasSalva.setStatusFerias(StatusFerias.SOLICITADA);
     }
 
@@ -75,7 +76,9 @@ class FeriasServiceTest {
     void buscarFeriasPorServidor_deveRetornarListaDeDTOs() {
         when(feriasRepository.findByServidorId(servidorId)).thenReturn(List.of(mockFerias));
         when(feriasMapper.toListDTO(anyList())).thenReturn(List.of(mockDetalheDTO));
+
         List<FeriasDetalheDTO> resultado = feriasService.listarPorServidor(servidorId);
+
         assertFalse(resultado.isEmpty());
         assertEquals(1, resultado.size());
         assertEquals(mockDetalheDTO.id(), resultado.get(0).id());
@@ -86,7 +89,9 @@ class FeriasServiceTest {
     @Test
     void buscarFeriasPorServidor_deveRetornarListaVaziaQuandoNaoHaFerias() {
         when(feriasRepository.findByServidorId(servidorId)).thenReturn(List.of());
+
         List<FeriasDetalheDTO> resultado = feriasService.listarPorServidor(servidorId);
+
         assertTrue(resultado.isEmpty());
         verify(feriasRepository, times(1)).findByServidorId(servidorId);
         verify(feriasMapper, times(1)).toListDTO(anyList());
@@ -96,7 +101,9 @@ class FeriasServiceTest {
     void buscarDetalheFerias_deveRetornarDTO() {
         when(feriasRepository.findById(feriasId)).thenReturn(Optional.of(mockFerias));
         when(feriasMapper.toDetalheDTO(mockFerias)).thenReturn(mockDetalheDTO);
+
         FeriasDetalheDTO resultado = feriasService.buscarPorId(feriasId);
+
         assertNotNull(resultado);
         assertEquals(mockDetalheDTO.id(), resultado.id());
         verify(feriasRepository, times(1)).findById(feriasId);

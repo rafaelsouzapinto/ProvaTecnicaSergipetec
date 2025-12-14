@@ -44,9 +44,9 @@ public class FeriasServiceImpl implements FeriasService {
 
     @Override
     public FeriasDetalheDTO criarNovaFerias(FeriasInputDTO inputDTO) {
-        ServidorModel servidor = servidorRepository.findById(inputDTO.idServidor())
-                .orElseThrow(() -> new RuntimeException("Servidor não encontrado"));
-
+        ServidorModel servidor = servidorRepository.findById(inputDTO.idServidor()).orElseThrow(
+                () -> new RuntimeException("Servidor não encontrado")
+        );
         StatusFerias statusInicial = StatusFerias.SOLICITADA;
         FeriasModel novaFerias = feriasMapper.toModel(inputDTO, servidor, statusInicial);
         FeriasModel feriasSalva = feriasRepository.save(novaFerias);
