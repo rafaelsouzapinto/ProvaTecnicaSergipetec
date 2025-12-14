@@ -1,10 +1,12 @@
 package dev.rafael.ProvaSergipetec.service;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
+import dev.rafael.ProvaSergipetec.dto.FeriasInputDTO;
 import dev.rafael.ProvaSergipetec.dto.LoginRequestDTO;
 import dev.rafael.ProvaSergipetec.mapper.FeriasMapper;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
 import dev.rafael.ProvaSergipetec.model.ServidorModel;
+import dev.rafael.ProvaSergipetec.model.StatusFerias;
 import dev.rafael.ProvaSergipetec.repository.FeriasRepository;
 import dev.rafael.ProvaSergipetec.repository.ServidorRepository;
 import dev.rafael.ProvaSergipetec.service.exception.ResourceNotFoundException;
@@ -39,5 +41,17 @@ public class FeriasServiceImpl implements FeriasService {
                 () -> new ResourceNotFoundException("Férias não encontrada com ID: " + feriasId)
         );
         return feriasMapper.toDetalheDTO(ferias);
+    }
+
+    @Override
+    public FeriasDetalheDTO criarNovaFerias(FeriasInputDTO inputDTO) {
+        ServidorModel servidor = servidorRepository.findById(inputDTO.idServidor())
+                .orElseThrow(() -> new RuntimeException("Servidor não encontrado"));
+
+        StatusFerias statusInicial = StatusFerias.SOLICITADA;
+        FeriasModel novaFerias = feriasMapper.toModel(inputDTO, servidor, statusInicial);
+        FeriasModel feriasSalva = feriasRepository.save(novaFerias);
+
+        return feriasMapper.toDetalheDTO(feriasSalva);
     }
 }
