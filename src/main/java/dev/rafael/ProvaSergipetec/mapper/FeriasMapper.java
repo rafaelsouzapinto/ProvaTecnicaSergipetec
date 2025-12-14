@@ -1,8 +1,11 @@
 package dev.rafael.ProvaSergipetec.mapper;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
+import dev.rafael.ProvaSergipetec.dto.FeriasInputDTO;
 import dev.rafael.ProvaSergipetec.dto.PagamentoDTO;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
+import dev.rafael.ProvaSergipetec.model.ServidorModel;
+import dev.rafael.ProvaSergipetec.model.StatusFerias;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,5 +39,15 @@ public class FeriasMapper {
         return models.stream()
                 .map(this::toDetalheDTO)
                 .collect(Collectors.toList());
+    }
+
+    public FeriasModel toModel(FeriasInputDTO dto, ServidorModel servidor, StatusFerias statusInicial) {
+        FeriasModel model = new FeriasModel();
+        model.setDataInicio(dto.dataInicio());
+        model.setDataFim(dto.dataFim());
+        model.setServidor(servidor);
+        model.setStatusFerias(statusInicial);
+
+        return model;
     }
 }
