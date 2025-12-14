@@ -1,12 +1,11 @@
 package dev.rafael.ProvaSergipetec.controller;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
+import dev.rafael.ProvaSergipetec.dto.FeriasInputDTO;
 import dev.rafael.ProvaSergipetec.service.FeriasServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +32,16 @@ public class FeriasController {
             return ResponseEntity.ok(detalhe);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/ferias")
+    public ResponseEntity<FeriasDetalheDTO> criarFerias(@RequestBody FeriasInputDTO inputDTO) {
+        try {
+            FeriasDetalheDTO feriasCriada = feriasService.criarNovaFerias(inputDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(feriasCriada);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
         }
     }
 }
