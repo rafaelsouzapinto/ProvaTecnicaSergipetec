@@ -2,7 +2,6 @@ package dev.rafael.ProvaSergipetec.service;
 
 import dev.rafael.ProvaSergipetec.dto.FeriasDetalheDTO;
 import dev.rafael.ProvaSergipetec.dto.FeriasInputDTO;
-import dev.rafael.ProvaSergipetec.dto.LoginRequestDTO;
 import dev.rafael.ProvaSergipetec.mapper.FeriasMapper;
 import dev.rafael.ProvaSergipetec.model.FeriasModel;
 import dev.rafael.ProvaSergipetec.model.ServidorModel;

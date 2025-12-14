@@ -1,7 +1,5 @@
 package dev.rafael.ProvaSergipetec.dto;
 
-import dev.rafael.ProvaSergipetec.model.FeriasModel;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

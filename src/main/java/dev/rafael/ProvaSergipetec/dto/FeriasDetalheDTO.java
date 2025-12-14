@@ -1,7 +1,5 @@
 package dev.rafael.ProvaSergipetec.dto;
 
-import dev.rafael.ProvaSergipetec.model.StatusFerias;
-
 import java.time.LocalDate;
 
 public record FeriasDetalheDTO(
