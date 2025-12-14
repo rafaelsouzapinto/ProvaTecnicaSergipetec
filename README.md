@@ -7,7 +7,7 @@ A aplicação é entregue totalmente containerizada usando Docker Compose, prior
 
 Estas instruções permitirão que você configure e execute a aplicação (API + Banco de Dados) com um único comando Docker.
 
-### 📋 Pré-requisitos
+## 📋 Pré-requisitos
 
 Você precisa apenas das seguintes ferramentas instaladas e em execução:
 
@@ -15,7 +15,7 @@ Você precisa apenas das seguintes ferramentas instaladas e em execução:
 Docker | Docker Compose
 ```
 
-### 🔒 Configuração de Variáveis de Ambiente (Segurança)
+## 🔒 Configuração de Variáveis de Ambiente (Segurança)
 
 **Passo Obrigatório:** Crie o arquivo **`.env`** na **raiz do projeto** com o seguinte conteúdo. O Docker Compose irá ler estas variáveis para configurar o banco e a API.
 
@@ -28,7 +28,7 @@ DB_PASS=postgres
 API_PORT=8080
 ```
 
-### 🔧 Instalação e Execução
+## 🔧 Instalação e Execução
 
 A API e o banco de dados serão inicializados juntos.
 
@@ -40,7 +40,6 @@ docker-compose up --build
 ```
 O argumento --build garante que a imagem da API seja criada com as últimas alterações antes de iniciar.
 
-
 <strong>2. Verificação de Dados (Inicialização)</strong>
 
 Após a inicialização do Spring Boot, o banco de dados será automaticamente populado com dados de demonstração (servidores, férias e pagamentos) através do arquivo:
@@ -48,12 +47,12 @@ Após a inicialização do Spring Boot, o banco de dados será automaticamente p
 src/main/resources/data.sql
 ```
 
-### 🌐 Acesso à Aplicação
+## 🌐 Acesso à Aplicação
 
 * **API REST:** http://localhost:8080
 * **Banco de Dados (Postgres):** localhost:5432
 
-### 💻 Endpoints da API 
+## 💻 Endpoints da API 
 
 | Recurso                       | Método | Endpoint                           |
 |-------------------------------|--------|------------------------------------|
@@ -64,7 +63,7 @@ src/main/resources/data.sql
 
 
 
-### 🛠️ Detalhes Técnicos
+## 🛠️ Detalhes Técnicos
 
 * **Back-end:** Java 21, Spring Boot 3, Spring Data JPA.
 * **Banco de Dados:** PostgreSQL.
