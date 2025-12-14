@@ -1,11 +1,29 @@
 services:
+  #Serviço da aplicação SpringBoot
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ferias_api
+    restart: always
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  #Serviço do banco de dados Postgres
   postgres:
     image: postgres:latest
-    container_name: prova_sergipetec
+    container_name: ferias_db
     restart: always
     environment:
-      POSTGRES_DB: provasergipetec
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
       - "5432:5432"
