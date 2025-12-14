@@ -9,7 +9,6 @@ public record FeriasInputDTO(
         @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate dataInicio,
         @JsonFormat(pattern = "dd/MM/yyyy")
-        LocalDate dataFim,
-        Integer diasVendidos
+        LocalDate dataFim
 ) {
 }
