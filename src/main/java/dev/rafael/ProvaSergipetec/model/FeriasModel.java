@@ -29,11 +29,13 @@ public class FeriasModel {
     @OneToOne(mappedBy = "ferias", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private PagamentoModel pagamento;
 
-    public FeriasModel(Long id, LocalDate dataInicio, LocalDate dataFim, StatusFerias statusFerias) {
+    public FeriasModel(Long id, LocalDate dataInicio, LocalDate dataFim, StatusFerias statusFerias, ServidorModel servidor, PagamentoModel pagamento) {
         this.id = id;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.statusFerias = statusFerias;
+        this.servidor = servidor;
+        this.pagamento = pagamento;
     }
     public FeriasModel() {
     }
@@ -81,6 +83,9 @@ public class FeriasModel {
                 "id=" + id +
                 ", dataInicio=" + dataInicio +
                 ", dataFim=" + dataFim +
+                ", statusFerias=" + statusFerias +
+                ", servidor=" + servidor +
+                ", pagamento=" + pagamento +
                 '}';
     }
 }

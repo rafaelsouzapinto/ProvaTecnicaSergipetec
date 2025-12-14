@@ -59,4 +59,21 @@ public class PagamentoModel {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    public FeriasModel getFerias() {
+        return ferias;
+    }
+    public void setFerias(FeriasModel ferias) {
+        this.ferias = ferias;
+    }
+
+    @Override
+    public String toString() {
+        return "PagamentoModel{" +
+                "id=" + id +
+                ", valor=" + valor +
+                ", dataPagamento=" + dataPagamento +
+                ", descricao='" + descricao + '\'' +
+                ", ferias=" + ferias +
+                '}';
+    }
 }

@@ -2,6 +2,7 @@ package dev.rafael.ProvaSergipetec.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,13 +26,14 @@ public class ServidorModel {
     private String senha;
 
     @OneToMany(mappedBy = "servidor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<FeriasModel> ferias;
+    private List<FeriasModel> ferias = new ArrayList<>();
 
-    public ServidorModel(Long id, String nome, String email, String matricula) {
+    public ServidorModel(Long id, String nome, String email, String matricula, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
+        this.senha = senha;
     }
     public ServidorModel() {
     }
@@ -60,6 +62,12 @@ public class ServidorModel {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     public List<FeriasModel> getFerias() {
         return ferias;
     }
@@ -68,9 +76,11 @@ public class ServidorModel {
     public String toString() {
         return "ServidorModel{" +
                 "id=" + id +
-                ", name='" + nome + '\'' +
+                ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", matricula='" + matricula + '\'' +
+                ", senha='" + senha + '\'' +
+                ", ferias=" + ferias +
                 '}';
     }
 }
