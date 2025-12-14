@@ -11,6 +11,7 @@ public class PagamentoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "valor", precision = 10, scale = 2)

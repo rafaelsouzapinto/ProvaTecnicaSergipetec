@@ -10,12 +10,13 @@ public class FeriasModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "data_inicio", nullable = false)
     private LocalDate dataInicio;
 
-    @Column(nullable = false)
+    @Column(name = "data_fim",nullable = false)
     private LocalDate dataFim;
 
     @Enumerated(EnumType.STRING)
@@ -78,7 +79,7 @@ public class FeriasModel {
     }
 
     @Override
-    public String toString() {
+    public String  toString() {
         return "FeriasModel{" +
                 "id=" + id +
                 ", dataInicio=" + dataInicio +
