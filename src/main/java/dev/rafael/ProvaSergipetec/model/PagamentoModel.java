@@ -26,7 +26,6 @@ public class PagamentoModel {
     @JoinColumn(name = "ferias_id", referencedColumnName = "id", nullable = false, unique = true)
     private FeriasModel ferias;
 
-
     public PagamentoModel(Long id, BigDecimal valor, LocalDate dataPagamento, String descricao) {
         this.id = id;
         this.valor = valor;

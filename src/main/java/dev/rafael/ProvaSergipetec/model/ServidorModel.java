@@ -64,7 +64,6 @@ public class ServidorModel {
         return ferias;
     }
 
-
     @Override
     public String toString() {
         return "ServidorModel{" +

@@ -16,8 +16,6 @@ public class ServidorServiceImpl implements ServidorService{
         this.servidorRepository = servidorRepository;
     }
 
-    //Metodo que verifica se a matrícula e senha existem
-    //Usado para simular um login com dados estáticos
     @Override
     public Long simularLogin(LoginRequestDTO loginRequest) {
         Optional<ServidorModel> servidor = servidorRepository.findByMatriculaAndSenha(

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/") // Mantemos o mapeamento base aqui por simplicidade
+@RequestMapping("/")
 public class ServidorController {
 
     private final ServidorServiceImpl servidorService;
